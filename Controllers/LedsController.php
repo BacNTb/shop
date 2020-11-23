@@ -303,6 +303,7 @@ class LedsController extends Controller
     
                 $_SESSION['cart'][$id] = 1;
                 $_SESSION['quantity'][$id] = $quantity;
+
             }
     
             if (isset($_SESSION['cart'])) {

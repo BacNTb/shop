@@ -226,8 +226,9 @@
 
 	<script>
 		function cart() {
+			console.log('a');
 			var quantity = $('#quantity').val();
-			$('#btn-cart').attr("href", "/Leds/cart/<?php echo $Led['id'];?>/" + quantity);
+			$('#btn-cart').attr("href", "/Leds/cart/<?php echo $led['id'];?>/" + quantity);
 		}
 
 	</script>
