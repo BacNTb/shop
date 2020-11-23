@@ -1,0 +1,12 @@
+table tr th {
+    position: sticky;
+    top: 68px;
+    z-index: 1;
+}
+
+.img_view {
+    width: 100px;
+    object-fit: cover;
+    margin: 0 15px 15px 0;
+    height: 100px;
+}
