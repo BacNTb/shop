@@ -12,6 +12,7 @@ class AdminModel extends Model
     protected $password;
     protected $email;
     protected $tell;
+    protected $action;
     protected $create_at;
     protected $update_at;
 
@@ -195,6 +196,26 @@ class AdminModel extends Model
     public function setImg($img)
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of action
+     */ 
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * Set the value of action
+     *
+     * @return  self
+     */ 
+    public function setAction($action)
+    {
+        $this->action = $action;
 
         return $this;
     }

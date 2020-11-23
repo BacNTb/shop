@@ -79,23 +79,38 @@ class LedsController extends Controller
         $this->set($d);
 
         if(isset($_POST['delete'])) {
+            $action = $_SESSION['action'];
 
-            $idDel = $_POST['delete'];
+            if($action == 1) {
+                $idDel = $_POST['delete'];
+    
+                $newLed->setId($idDel);
+    
+                $newImg->setId($idDel);
+    
+                if ($this->LedRepository->delete($newLed))
+                {
+                    if ($rep->deleteImg($newImg)) {
+    
+                        $d['led'] = $this->LedRepository->showAll($newLed);
+                        $this->set($d);
 
-            $newLed->setId($idDel);
-
-            $newImg->setId($idDel);
-
-            if ($this->LedRepository->delete($newLed))
-            {
-                if ($rep->deleteImg($newImg)) {
-
-                    $d['led'] = $this->LedRepository->showAll($newLed);
-                    $this->set($d);
-        
-                    $this->render("home");
+                        $d['message'] = "Xóa sản phẩm thành công !";
+                        $this->set($d);
+            
+                    }
                 }
+
+            } else {
+                $d['led'] = $this->LedRepository->showAll($newLed);
+                $this->set($d);
+
+                $d['message'] = "Bạn không đủ quyền để xóa sản phẩm này !";
+                $this->set($d);
+
             }
+            
+            $this->render("home");
 
         } else {
             $d['led'] = $this->LedRepository->showAll($newLed);
@@ -127,36 +142,64 @@ class LedsController extends Controller
         $this->set($d);
 
         if(isset($_POST['delete'])) {
+            $action = $_SESSION['action'];
 
-            $idDel = $_POST['delete'];
-
-            $newLed->setId($idDel);
-
-            $newImg->setId($idDel);
-
-            if ($this->LedRepository->delete($newLed))
-            {
-                if ($rep->deleteImg($newImg)) {
-                    if($id != 'all') {
-                        $arr = $this->LedRepository->showAll($newLed);
-                
-                        $d['led'] = [];
-                
-                        foreach ($arr as $key => $value) {
-                            
-                            if($value['categori_id'] == $id) {
-                                $d['led'][$key] = $value;
-                            }       
-                        }
-            
-                    } else {
-                        $d['led'] = $this->LedRepository->showAll($newLed);
-                    }
-                    $this->set($d);
+            if($action == 1) {
+                $idDel = $_POST['delete'];
     
-                    $this->render("homeCateId");
+                $newLed->setId($idDel);
+    
+                $newImg->setId($idDel);
+    
+                if ($this->LedRepository->delete($newLed))
+                {
+                    if ($rep->deleteImg($newImg)) {
+                        if($id != 'all') {
+                            $arr = $this->LedRepository->showAll($newLed);
+                    
+                            $d['led'] = [];
+                    
+                            foreach ($arr as $key => $value) {
+                                
+                                if($value['categori_id'] == $id) {
+                                    $d['led'][$key] = $value;
+                                }       
+                            }
+                
+                        } else {
+                            $d['led'] = $this->LedRepository->showAll($newLed);
+                        }
+                        $this->set($d);
+
+                        $d['message'] = "Xóa sản phẩm thành công !";
+                        $this->set($d);
+                    }
                 }
+
+            } else {
+                if($id != 'all') {
+                    $arr = $this->LedRepository->showAll($newLed);
+            
+                    $d['led'] = [];
+            
+                    foreach ($arr as $key => $value) {
+                        
+                        if($value['categori_id'] == $id) {
+                            $d['led'][$key] = $value;
+                        }       
+                    }
+        
+                } else {
+                    $d['led'] = $this->LedRepository->showAll($newLed);
+                }
+
+                $this->set($d);
+
+                $d['message'] = "Bạn không đủ quyền để xóa sản phẩm này !";
+                $this->set($d);
             }
+            
+            $this->render("homeCateId");
 
         } else {
             if($id != 'all') {

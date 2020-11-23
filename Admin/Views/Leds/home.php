@@ -1,5 +1,12 @@
 <div class="card">
-    <h5 class="card-header text-danger">Danh sách sản phẩm</h5>
+    <h5 class="card-header text-danger">
+        Danh sách sản phẩm
+        <?php 
+            if(isset($message)) {
+                echo ' - ' . $message;        
+            }
+        ?>
+    </h5>
     <div class="card-body">
         <div class="div-link">
             <a href="/Admin/Leds/create/" class="btn btn-primary btn-xs">

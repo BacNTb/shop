@@ -1,5 +1,11 @@
 <div class="card">
-    <h5 class="card-header text-danger">Sửa Thông Tin Đèn Led</h5>
+    <h5 class="card-header text-danger">
+        Sửa Thông Tin Đèn Led
+        <?php if (isset($Led["name"])) {
+                echo ' - ' . $Led["name"]; 
+            }
+        ?>
+    </h5>
     <div class="card-body">
         <a href="/Admin/Leds/home/" class="btn btn-info btn-sm" style="margin-bottom: 20px">Trở lại</a>
 

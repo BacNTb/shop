@@ -28,18 +28,32 @@ class CategorisController extends Controller
         $this->set($d);
 
         if(isset($_POST['delete'])) {
+            $action = $_SESSION['action'];
 
-            $id = $_POST['delete'];
+            if($action == 1) {
+                $id = $_POST['delete'];
+    
+                $newCate->setId($id);
+    
+                if ($this->CateRepository->delete($newCate))
+                {
+                    $d['cate'] = $this->CateRepository->showAll($newCate);
+                    $this->set($d);
 
-            $newCate->setId($id);
+                    $d['message'] = "Xóa danh mục thành công !";
+                    $this->set($d);
+                }
 
-            if ($this->CateRepository->delete($newCate))
-            {
+            } else {
+
                 $d['cate'] = $this->CateRepository->showAll($newCate);
                 $this->set($d);
-    
-                $this->render("cate");
+
+                $d['message'] = "Bạn không đủ quyền để xóa danh mục này !";
+                $this->set($d);
             }
+
+            $this->render("cate");
 
         } else {
             $d['cate'] = $this->CateRepository->showAll($newCate);

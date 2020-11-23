@@ -1,5 +1,12 @@
 <div class="card">
-    <h5 class="card-header text-danger">Thông Tin Admin</h5>
+    <h5 class="card-header text-danger">
+    Thông Tin Admin
+    <?php 
+        if(isset($message)) {
+            echo ' - ' . $message;        
+        }
+    ?>
+    </h5>
     <div class="card-body">
         <a href="/Admin/Admins/admin/home" class="btn btn-info btn-sm">Trở lại</a>
         <table class="table table-hover table-product table-product mt-3 text-center">
@@ -10,6 +17,7 @@
                     <th>Tên đang nhập</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
+                    <th>Quyền</th>
                     <th>Lựa chọn</th>
                 </tr>
             </thead>
@@ -22,6 +30,7 @@
                         <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td>0<?php echo $row['tell']; ?></td>
+                        <td><?php echo $row['action']; ?></td>
 
                         <td class='text-center d-flex justify-content-center'>
                             <a class='btn btn-outline-info btn-sm' href='/Admin/Admins/edit/<?php echo $row["id"]; ?>' style="margin-right: 4px;">
