@@ -118,7 +118,7 @@ class LedsController extends Controller
 
         } else {
 
-            if (isset($_POST['toAddress'])) {
+            if (isset($_POST['addReplyTo'])) {
     
                 if (empty($_POST['addName'])) {
                     $d['error'] = "Vui lòng nhập họ tên của bạn !";
@@ -142,7 +142,8 @@ class LedsController extends Controller
                         $mail->Port = '465';
     
                         $mail->setFrom($_POST['addReplyTo'], $_POST['addName']);
-                        $mail->addAddress($_POST['toAddress']);
+                        // $mail->addAddress($_POST['toAddress']);
+                        $mail->addAddress('ntbaccntt@gmail.com');
                         $mail->addReplyTo($_POST['addReplyTo'], $_POST['addName']);
                         //    $mail->addCC('CCemail@gmail.com');
                         //    $mail->addBCC('BCCemail@gmail.com');

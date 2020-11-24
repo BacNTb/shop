@@ -36,11 +36,11 @@
                 <?php } ?>
 
                 <form class="contact-form" method="post">
-                    <input name="toAddress" type="hidden" value="ntbaccntt@gmail.com" require>
-                    <input name="addName" type="text" placeholder="Họ tên ..." require>
-                    <input name="addReplyTo" type="email" placeholder="Email ..." require>
-                    <input name="title" type="text" placeholder="Tiêu đề ..." require>
-                    <textarea name="content" placeholder="Nội dung tin nhắn ..." require></textarea>
+                    <!-- <input name="toAddress" type="hidden" value="ntbaccntt@gmail.com" require> -->
+                    <input name="addName" type="text" placeholder="Họ tên ..." require="">
+                    <input name="addReplyTo" type="email" placeholder="Email ..." require="">
+                    <input name="title" type="text" placeholder="Tiêu đề ..." require="">
+                    <textarea name="content" placeholder="Nội dung tin nhắn ..." require=""></textarea>
                     <button class="site-btn">GỬI TIN</button>
                 </form>
             </div>
